@@ -649,19 +649,15 @@ ___WEB_PERMISSIONS___
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 // Require the necessary APIs
-const copyFromWindow = require('copyFromWindow');
 const logToConsole = require('logToConsole');
 const injectScript = require('injectScript');
 const queryPermission = require('queryPermission');
 const encode = require('encodeUriComponent');
 const callInWindow = require('callInWindow');
 const makeTableMap = require('makeTableMap');
-const setInWindow = require('setInWindow');
+const createQueue = require('createQueue');
 const log = require('logToConsole');
 
-
-// Helper methods
-const isArray = arr => callInWindow('toString.call', arr) === '[object Array]';
 
 const partnerId = data.partnerId;
 const additionalParameters = data.additionalParameters ?  makeTableMap(data.additionalParameters, 'parameterName', 'parameterValue') : {};
@@ -669,12 +665,7 @@ let dataObject;
 
 
 // Create the global _lea queue if it doesn't yet exists
-const _lea = copyFromWindow('_lea');
-if (!isArray(_lea)) {
-  setInWindow('_lea', _lea ? [_lea] : [], true);
-}
-
-
+const _lea = createQueue('_lea');
 
 switch (data.trackType) {
     
@@ -772,7 +763,7 @@ switch (data.trackType) {
 
 callInWindow('_lea.push', dataObject);
 
-injectScript("//tc.connects.ch/lila.js", data.gtmOnSuccess, data.gtmOnFailure, 'asyncadf');
+injectScript("https://tc.connects.ch/lila.js", data.gtmOnSuccess, data.gtmOnFailure, 'asyncadf');
 
 
 ___NOTES___
