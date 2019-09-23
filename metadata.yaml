@@ -1,0 +1,5 @@
+homepage: "www.connects.ch" ,
+documentation: "https://docs.connects.ch" ,
+versions:
+- sha: 6bbf515
+  changeNotes: Initial release.
