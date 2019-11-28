@@ -1,5 +1,5 @@
 homepage: "www.connects.ch" ,
 documentation: "https://docs.connects.ch" ,
 versions:
-- sha: 1a89310
-  changeNotes: Initial release.
+- sha: 81139f5
+  changeNotes: Add new parameter checkoutdomain.
