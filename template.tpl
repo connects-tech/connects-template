@@ -450,6 +450,10 @@ ___TEMPLATE_PARAMETERS___
           {
             "value": "checkoutdomain",
             "displayValue": "checkoutdomain"
+          },
+          {
+            "value": "products",
+            "displayValue": "products"
           }
         ],
         "defaultValue": "",
@@ -521,6 +525,7 @@ switch (data.trackType) {
     additionalParameters.oname ? dataObject.oname = additionalParameters.oname : '';
     additionalParameters.ochannel ? dataObject.ochannel = additionalParameters.ochannel : '';
     additionalParameters.checkoutdomain ? dataObject.checkoutdomain = additionalParameters.checkoutdomain : '';
+    additionalParameters.products ? dataObject.products = additionalParameters.products : '';
     data.transactionVoucher ? dataObject.voucher = data.transactionVoucher : '';
     
     if (data.trackType == 'conversion_basket'){
